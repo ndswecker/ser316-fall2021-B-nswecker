@@ -64,6 +64,9 @@ public class GivenBlackBox {
     
     BearWorkshop freeInkBears;
     Double freeInkExpected;
+    
+    BearWorkshop inkLengthBears;
+    Double inkLengthExpected;
 
     @Before
     public void setUp() throws Exception {
@@ -225,6 +228,8 @@ public class GivenBlackBox {
     	assertEquals(inkDiscountExpected, ans);
     }
     
+    /** Test if a bear costing less than $70 will incur an embroidery cost 
+     * */
     @Test
     public void costInkTest() {
     	freeInkBears = null;
@@ -240,6 +245,113 @@ public class GivenBlackBox {
     	Double ans = freeInkBears.calculateSavings();
     	//System.out.println("No savings expected for this basic bear -->" + ans);
     	assertEquals(inkSavings, ans);
+    }
+    
+    /** Test that the cost for the length of embroidery is $1 per character
+     * Tests 1 thru 10 characters
+     *  */
+    @Test
+    public void inkLengthCost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength1.ink = new Embroidery(randomLengthString(10));
+    	inkLengthBears.addBear(inkLength1);
+    	
+    	inkCost = 10 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength1);
+    	assertEquals(inkCost, ans);
+    }
+    
+    /** Test embroidery length 0*/
+    @Test
+    public void inkLength0Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength0 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength0.ink = new Embroidery(randomLengthString(0));
+    	inkLengthBears.addBear(inkLength0);
+    	
+    	inkCost = 0 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength0);
+    	String message = "Length " + 0 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    
+    /** Test embroidery length 1*/
+    @Test
+    public void inkLength1Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength1.ink = new Embroidery(randomLengthString(1));
+    	inkLengthBears.addBear(inkLength1);
+    	
+    	inkCost = 1 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength1);
+    	String message = "Length " + 1 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    /** Test embroidery length 5*/
+    @Test
+    public void inkLength5Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength5 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength5.ink = new Embroidery(randomLengthString(5));
+    	inkLengthBears.addBear(inkLength5);
+    	
+    	inkCost = 5 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength5);
+    	String message = "Length " + 5 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    /** Test embroidery length 10*/
+    @Test
+    public void inkLength10Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength10 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength10.ink = new Embroidery(randomLengthString(10));
+    	inkLengthBears.addBear(inkLength10);
+    	
+    	inkCost = 10 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength10);
+    	String message = "Length " + 10 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    
+    private String randomLengthString(int r) {
+        // Make a random name for each of the accessories
+        byte[] array = new byte[r]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+        return generatedString;
     }
     
 }
