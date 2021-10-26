@@ -7,10 +7,12 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import java.lang.reflect.Constructor;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 //import main.java.BearWorkshop;
 
@@ -56,6 +58,9 @@ public class GivenBlackBox {
 
     BearWorkshop twoBears;
     Double twoBearsExpected;
+    
+    BearWorkshop largeOrderBears;
+    Double largeOrderExpected;
 
     @Before
     public void setUp() throws Exception {
@@ -108,6 +113,28 @@ public class GivenBlackBox {
         Double ans = threeBears.calculateSavings();
         assertEquals(threeBearsExpected, ans);
     }
+    
+    //nswecker test
+    @Test
+    public void largeOrderBuy999get333Free() {
+    	// Test if large numbers work as expected. Only pay for 666 bears
+    	BearWorkshop largeOrderBears = null;
+    	try {
+    		largeOrderBears = createBearWorkshop("Bulkistan");
+    	} catch (Exception e) {
+    		
+    	}
+    	for (int i = 0; i <= 333; i++) {
+    		largeOrderBears.addBear(new Bear(Stuffing.stuffing.BASE));
+    		largeOrderBears.addBear(new Bear(Stuffing.stuffing.DOWN));
+    		largeOrderBears.addBear(new Bear(Stuffing.stuffing.FOAM));
+    	}
+
+    	largeOrderExpected = 19980.00; 
+    	
+    	Double ans = largeOrderBears.calculateSavings();
+    	assertEquals(largeOrderExpected, ans);
+    }
 
     // sample test
  
@@ -127,6 +154,34 @@ public class GivenBlackBox {
 	    customBear.clothing.add(new Clothing(4, "Shoes")); // free
 	    
         Double bearsExpected = 4.0; // one cloth item for free
+        Double ans = bears.calculateSavings();
+        assertEquals(bearsExpected, ans, 0.005);
+    }
+    
+    // sample test
+    
+    @Test
+    public void oneBearTest14clothings() {
+    	// test if the 10 percent discount will work
+        BearWorkshop bears = null;
+        try {
+            bears = createBearWorkshop("VT"); // the 14th state
+        } catch (Exception e) {
+        }
+        
+        Bear customBear = new Bear(Stuffing.stuffing.BASE); // $31
+        bears.addBear(customBear);
+        
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        
+        for (int i = 0; i < 15; i++) {
+            String generatedString = new String(array, Charset.forName("UTF-8"));
+    	    customBear.clothing.add(new Clothing(4, generatedString)); //$35
+        }
+
+	    
+        Double bearsExpected = 4.0 * 4; // 4 free clothing items
         Double ans = bears.calculateSavings();
         assertEquals(bearsExpected, ans, 0.005);
     }
