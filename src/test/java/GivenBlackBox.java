@@ -474,4 +474,9 @@ public class GivenBlackBox {
     	return bear;
     }
     
+    @Test
+    public void customerFullMake() {
+    	Customer test = new Customer(20, "TE", null);
+    	assertEquals(test.state, "TE");
+    }
 }
