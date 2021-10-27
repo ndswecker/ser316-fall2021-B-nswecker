@@ -1,4 +1,6 @@
 import main.java.*;
+import main.java.NoiseMaker.Location;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,6 +66,12 @@ public class GivenBlackBox {
     
     BearWorkshop freeInkBears;
     Double freeInkExpected;
+    
+    BearWorkshop inkLengthBears;
+    Double inkLengthExpected;
+    
+    BearWorkshop noisyBears;
+    Double noiseExpected;
 
     @Before
     public void setUp() throws Exception {
@@ -225,6 +233,8 @@ public class GivenBlackBox {
     	assertEquals(inkDiscountExpected, ans);
     }
     
+    /** Test if a bear costing less than $70 will incur an embroidery cost 
+     * */
     @Test
     public void costInkTest() {
     	freeInkBears = null;
@@ -242,4 +252,231 @@ public class GivenBlackBox {
     	assertEquals(inkSavings, ans);
     }
     
+    /** Test that the cost for the length of embroidery is $1 per character
+     * Tests 1 thru 10 characters
+     *  */
+    @Test
+    public void inkLengthCost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength1.ink = new Embroidery(randomLengthString(10));
+    	inkLengthBears.addBear(inkLength1);
+    	
+    	inkCost = 10 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength1);
+    	assertEquals(inkCost, ans);
+    }
+    
+    /** Test embroidery length 0*/
+    @Test
+    public void inkLength0Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength0 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength0.ink = new Embroidery(randomLengthString(0));
+    	inkLengthBears.addBear(inkLength0);
+    	
+    	inkCost = 0 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength0);
+    	String message = "Length " + 0 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    
+    /** Test embroidery length 1*/
+    @Test
+    public void inkLength1Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength1.ink = new Embroidery(randomLengthString(1));
+    	inkLengthBears.addBear(inkLength1);
+    	
+    	inkCost = 1 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength1);
+    	String message = "Length " + 1 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    /** Test embroidery length 5*/
+    @Test
+    public void inkLength5Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength5 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength5.ink = new Embroidery(randomLengthString(5));
+    	inkLengthBears.addBear(inkLength5);
+    	
+    	inkCost = 5 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength5);
+    	String message = "Length " + 5 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    /** Test embroidery length 10*/
+    @Test
+    public void inkLength10Cost() {
+    	Double inkCost;
+		inkLengthBears = null;
+    	try {
+    		inkLengthBears = createBearWorkshop("WA");
+    	} catch (Exception e) {
+    	}
+    	
+    	Bear inkLength10 = new Bear(Stuffing.stuffing.BASE); // $31
+    	inkLength10.ink = new Embroidery(randomLengthString(10));
+    	inkLengthBears.addBear(inkLength10);
+    	
+    	inkCost = 10 + 31.0;
+    	Double ans = inkLengthBears.getRawCost(inkLength10);
+    	String message = "Length " + 10 + " caused failure";
+    	assertEquals(message, inkCost, ans);
+    }
+    
+    private String randomLengthString(int r) {
+        // Make a random name for each of the accessories
+        byte[] array = new byte[r]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+        return generatedString;
+    }
+    
+    /** Test how much a center noise maker adds to the raw cost of a bear */
+    @Test
+    public void NoiseMakerCenter() {
+    	noisyBears = null;
+    	try {
+    		noisyBears = createBearWorkshop("BoomLand");
+    	} catch (Exception e) {
+    	}
+    	
+    	//Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+    	//loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.CENTERBODY));
+    	Bear loudBear = testAnyNoiseMaker(1);
+    	noisyBears.addBear(loudBear);
+    	
+    	Double noiseCost = 41.0;
+    	Double ans = noisyBears.getRawCost(loudBear);
+    	//System.out.println("Bear with centerbody noise maker cost --> " + ans + " Expected: " + noiseCost);
+    	
+    	assertEquals(noiseCost, ans);
+    }
+    /** Test how much a limb noise maker adds to the raw cost of a bear */
+    @Test
+    public void NoiseMakerOuter() {
+    	noisyBears = null;
+    	try {
+    		noisyBears = createBearWorkshop("BoomLand");
+    	} catch (Exception e) {
+    	}
+    	
+    	//Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+    	//loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.CENTERBODY));
+    	Bear loudBear = testAnyNoiseMaker(2);
+    	noisyBears.addBear(loudBear);
+    	
+    	Double noiseCost = 36.0;
+    	Double ans = noisyBears.getRawCost(loudBear);
+    	//System.out.println("Bear with centerbody noise maker cost --> " + ans + " Expected: " + noiseCost);
+    	
+    	assertEquals(noiseCost, ans);
+    }
+    /** Test how much a center and  limb noise maker adds to the raw cost of a bear */
+    @Test
+    public void NoiseMakerMultiple() {
+    	noisyBears = null;
+    	try {
+    		noisyBears = createBearWorkshop("BoomLand");
+    	} catch (Exception e) {
+    	}
+
+    	Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+    	int[] multiNoise = {1,2,0};
+    	loudBear = testAnyNoiseMaker(multiNoise,loudBear);
+    	noisyBears.addBear(loudBear);
+    	
+    	Double noiseCost = 46.0;
+    	Double ans = noisyBears.getRawCost(loudBear);
+    	//System.out.println("Bear with centerbody noise maker cost --> " + ans + " Expected: " + noiseCost);
+    	
+    	assertEquals(noiseCost, ans);
+    }
+    /** Test how much two limb noises maker adds to the raw cost of a bear */
+    @Test
+    public void NoiseMakerMultipleLimbs() {
+    	noisyBears = null;
+    	try {
+    		noisyBears = createBearWorkshop("BoomLand");
+    	} catch (Exception e) {
+    	}
+
+    	Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+    	int[] multiNoise = {0,2,3};
+    	loudBear = testAnyNoiseMaker(multiNoise,loudBear);
+    	noisyBears.addBear(loudBear);
+    	
+    	Double noiseCost = 41.0;
+    	Double ans = noisyBears.getRawCost(loudBear);
+    	//System.out.println("Bear with centerbody noise maker cost --> " + ans + " Expected: " + noiseCost);
+    	
+    	assertEquals(noiseCost, ans);
+    }
+    
+    private Bear testAnyNoiseMaker(int locale) {
+    	Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+    	if (locale == 1) {
+    		loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.CENTERBODY));
+    	} else if (locale == 2) {
+    		loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.RIGHT_HAND));
+    	} else if (locale == 3) {
+    		loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.RIGHT_FOOT));
+    	} else if (locale == 4) {
+    		loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.LEFT_HAND));
+    	} else if (locale == 5) {
+    		loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.LEFT_FOOT));
+    	}
+    	return loudBear;
+    }
+    private Bear testAnyNoiseMaker(int[] locale, Bear bear) {
+    	if (locale[0] == 1) {
+    		bear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.CENTERBODY));
+    	}
+    	if (locale[1] == 2 || locale[2] == 2) {
+    		bear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.RIGHT_HAND));
+    	}
+    	if (locale[1] == 3 || locale[2] == 3) {
+    		bear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.RIGHT_FOOT));
+    	}
+    	if (locale[1] == 4 || locale[2] == 4) {
+    		bear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.LEFT_HAND));
+    	}
+    	if (locale[1] == 5 || locale[2] == 5) {
+    		bear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.LEFT_FOOT));
+    	}
+    	return bear;
+    }
+    
+    @Test
+    public void customerFullMake() {
+    	Customer test = new Customer(20, "TE", null);
+    	assertEquals(test.state, "TE");
+    }
 }
