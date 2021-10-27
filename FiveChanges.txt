@@ -5,3 +5,11 @@ Five things that I would change
 	3. There are no getters or setters for the Customer class. Its hard to test customer if I have no access to their attributes.
 	4. The compareTo method in Clothing has no description. I have no idea what this method is for, and so have no basis for how to test it.
 	5. checkout() for BearWorkshop indicates an age restriction on purchasing. I have no idea why this exists.
+
+Task 1
+	10. Which implementation adheres to the specification best?
+	Answer: implementation 1, 3, and 4 past 15 out of 17 tests, while 0 and 2 past 14 out of 17. Obviously none passed all tests.
+	11. List errors found
+		a. app does not properly calculate the 10% discount for 10+ paid accessories
+		b. app does not always calculate the correct ink costs for embroidery
+		c. app does not always calcute the free ink discount for $70+ bears
