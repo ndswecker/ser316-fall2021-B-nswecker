@@ -1,3 +1,11 @@
+/*
+  File:	Embroidery.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
 // You can assume the price of $1 per letter is correct

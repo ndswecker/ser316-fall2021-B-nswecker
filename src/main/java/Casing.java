@@ -1,3 +1,11 @@
+/*
+  File:	Casing.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
 public class Casing {
