@@ -11,8 +11,10 @@ package main.java;
 import java.util.UUID;
 
 /**
- * This a class for Customer in the Bear Workshop.
- */
+Class:	Customer
+
+Description: This a class for Customer in the Bear Workshop.
+*/
 public class Customer {
     int age;
 

@@ -10,7 +10,11 @@ package main.java;
 
 import java.util.*;
 
-// This class provides functionality for a BearWorkshop class.
+/**
+Class:	BearWorkshop
+
+Description: This class provides functionality for a BearWorkshop class.
+*/
 public class BearWorkshop implements BearWorkshopInterface{
     // Workshop has a collection of bears
     // Workshop has a customer

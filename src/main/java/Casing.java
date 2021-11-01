@@ -8,6 +8,11 @@
 
 package main.java;
 
+/**
+Class:	Casing
+
+Description:
+*/
 public class Casing {
     double priceModifier;
 

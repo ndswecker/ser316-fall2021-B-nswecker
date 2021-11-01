@@ -8,6 +8,11 @@
 
 package main.java;
 
+/**
+Class:	Stuffing
+
+Description:
+*/
 public class Stuffing {
     public enum stuffing {
         BASE,

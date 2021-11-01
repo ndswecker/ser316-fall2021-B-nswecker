@@ -8,6 +8,11 @@
 
 package main.java;
 
+/**
+Class:	NoiseMaker
+
+Description:
+*/
 public class NoiseMaker {
     public double price;
     String label;

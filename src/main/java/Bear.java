@@ -1,8 +1,21 @@
+/*
+  File:	Bear.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
 import main.java.Stuffing.stuffing;
 import java.util.LinkedList;
 
+/**
+Class:	Bear
+
+Description:
+*/
 public class Bear implements Comparable<Bear>{
     public Casing casing;
     public Stuffing stuff;
