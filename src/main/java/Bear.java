@@ -47,10 +47,22 @@ public class Bear implements Comparable<Bear>{
         price = 0;
     }
 
+    /**
+    Method: setPrice()
+    Description:
+    @param incomingPrice
+    @return void
+  */
     public void setPrice(double incomingPrice) {
         this.price = incomingPrice;
     }
-
+    
+    /**
+    Method: addNoise()
+    Description: Adds NoiseMaker object to Bear object
+    @param noise
+    @return boolean
+  */
     public boolean addNoise(NoiseMaker noise) {
         if (this.noisemakers.size() >= 5) {
             return false;
@@ -65,6 +77,12 @@ public class Bear implements Comparable<Bear>{
         }
     }
 
+    /**
+    Method: compareTo()
+    Description: Compares incoming bear price to this bear price
+    @param bear
+    @return int
+  */
     @Override
     public int compareTo(Bear bear) {
         return new Double(this.price).compareTo(bear.price);
