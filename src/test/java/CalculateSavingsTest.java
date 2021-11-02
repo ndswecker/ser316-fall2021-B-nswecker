@@ -167,6 +167,7 @@ public class CalculateSavingsTest {
     @Test
     public void oneBearTest14clothings() {
     	// test if the 10 percent discount will work. 14 accessories means 4 are free, and 10 are paid
+    	System.out.println("Testing 14 clothing items of $4 each");
         BearWorkshop bears = null;
         try {
             bears = createBearWorkshop("VT"); // the 14th state
@@ -176,7 +177,7 @@ public class CalculateSavingsTest {
         Bear customBear = new Bear(Stuffing.stuffing.BASE); // $31
         bears.addBear(customBear);
         
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 14; i++) {
             // Make a random name for each of the accessories
             byte[] array = new byte[7]; // length is bounded by 7
             new Random().nextBytes(array);
@@ -189,7 +190,8 @@ public class CalculateSavingsTest {
         // Expected savings: 87 - 71 = 16
         Double bearsExpected = 16.0; // 4 free clothing items
         Double ans = bears.calculateSavings();
-        //System.out.println("14 Acc. savings --> " + ans);
+       
+        System.out.println("14 Acc. savings --> " + ans + "\n");
         assertEquals(bearsExpected, ans, 0.005);
     }
     

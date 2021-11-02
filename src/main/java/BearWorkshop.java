@@ -9,6 +9,9 @@
 package main.java;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
 Class:	BearWorkshop
@@ -36,6 +39,7 @@ public class BearWorkshop implements BearWorkshopInterface{
         BearCart = new LinkedList<>();
         customer = new Customer(state);
     }
+    
 
     /**
      * This is a convenience method to calculate the cost of one bears in the
@@ -229,8 +233,25 @@ public class BearWorkshop implements BearWorkshopInterface{
      * @return the savings if the customer would check with the current bears in the workshop out as double
      */
     public double calculateSavings() {
-        System.out.println("TODO: Implement me in Assignment 3");
-        return 0.0;
+        //System.out.println("TODO: Implement me in Assignment 3");
+        
+        List<Bear> cart = this.BearCart; // Make reference to a BearCart
+        
+        double eachBearSavings = 0; // Start a savings for each individual bear at zero
+        double allBearsSavings = 0; // Start a savings for all the bears together at zero
+        
+        // Iterate thru all bears in the BearCart
+        for (int i = 0; i < cart.size(); i++) {
+            Bear bear = cart.get(i); // Select each bear
+            double rawCost = getRawCost(bear); // Find raw cost of each bear
+            double cost = getCost(bear); // Find the cost of each bear
+            System.out.println(rawCost + " <- raw cost of bear " + i);
+            System.out.println(cost + " <- actual cost of bear " + i);
+            eachBearSavings += rawCost - cost;
+            System.out.println(eachBearSavings + " <<< savings at");
+        }
+        
+        return eachBearSavings;
     }
     
  
