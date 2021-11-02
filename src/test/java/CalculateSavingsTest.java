@@ -201,6 +201,7 @@ public class CalculateSavingsTest {
      *  */
     @Test
     public void freeInkTest() {
+    	System.out.println("\nTesting free ink");
     	freeInkBears = null;
     	try {
     		freeInkBears = createBearWorkshop("InkLandia"); // The land of free ink
@@ -213,7 +214,7 @@ public class CalculateSavingsTest {
     	
     	Double inkDiscountExpected = 10.0; // 10 characters = $10
     	Double ans = freeInkBears.calculateSavings();
-    	//System.out.println("Expensive Bear with Embroidery Savings --> " + ans);
+    	System.out.println("Expensive Bear with Embroidery Savings --> " + ans);
     	assertEquals(inkDiscountExpected, ans);
     }
     

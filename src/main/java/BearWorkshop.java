@@ -53,14 +53,16 @@ public class BearWorkshop implements BearWorkshopInterface{
     public double getCost(Bear bear) {
         Collections.sort(bear.clothing);
         int numFree = bear.clothing.size() / CLOTHING_DISCOUNT;
+        System.out.println("CLOTHING_DISCOUNT -> " + numFree);
         ArrayList<Clothing> freeClothes = new ArrayList<>();
-
-        for (int i = 0; i < bear.clothing.size(); i++) {
+        
+    	for (int i = 0; i < bear.clothing.size(); i++) {
             Clothing clothes = bear.clothing.get(i);
             if (i < numFree) {
                 freeClothes.add(clothes);
             } else {
                 bear.price += clothes.price;
+                System.out.println("adding " + clothes.Description + " to the price");
             }
         }
 
@@ -68,12 +70,21 @@ public class BearWorkshop implements BearWorkshopInterface{
             bear.price += noise.price;
         }
 
-        if (bear.ink != null) {
-            bear.price += bear.ink.price;
-        }
-
         bear.price += bear.stuff.price;
         bear.price += bear.casing.priceModifier;
+        
+        if (bear.ink != null) {
+        	double inkPrice = bear.ink.price;
+        	System.out.println("ink price -> " + inkPrice);
+        	// if bear price is < 70, the ink price is added into the cost
+        	if (bear.price <= 70) {
+        		System.out.println("bear is " + bear.price + " , and so ink cost is added");
+        		bear.price += bear.ink.price;
+        	} else {
+        		System.out.println("bear is > $70, so ink is free");
+        		System.out.println("price now at -> " + bear.price);
+        	}
+        }
 
         return bear.price;
     }
