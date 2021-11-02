@@ -48,7 +48,7 @@ public class BearWorkshop implements BearWorkshopInterface{
     @Override
     public double getCost(Bear bear) {
         Collections.sort(bear.clothing);
-        int numFree = bear.clothing.size() / 3;
+        int numFree = bear.clothing.size() / CLOTHING_DISCOUNT;
         ArrayList<Clothing> freeClothes = new ArrayList<>();
 
         for (int i = 0; i < bear.clothing.size(); i++) {

@@ -9,6 +9,8 @@
 package main.java;
 
 public interface BearWorkshopInterface {
+	
+	static final int CLOTHING_DISCOUNT = 3;
     
     public double getCost(Bear bear);
     public boolean addBear(Bear bear);
