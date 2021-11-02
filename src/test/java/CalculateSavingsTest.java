@@ -242,6 +242,7 @@ public class CalculateSavingsTest {
      *  */
     @Test
     public void inkLengthCost() {
+    	System.out.println("\ninkLengthCost()");
     	Double inkCost;
 		inkLengthBears = null;
     	try {
@@ -255,6 +256,7 @@ public class CalculateSavingsTest {
     	
     	inkCost = 10 + 31.0;
     	Double ans = inkLengthBears.getRawCost(inkLength1);
+    	System.out.println("ans -> " + ans + " =? " + inkCost);
     	assertEquals(inkCost, ans);
     }
     
@@ -319,6 +321,7 @@ public class CalculateSavingsTest {
     /** Test embroidery length 10*/
     @Test
     public void inkLength10Cost() {
+    	System.out.println("inkLengthCost10()");
     	Double inkCost;
 		inkLengthBears = null;
     	try {
@@ -332,8 +335,8 @@ public class CalculateSavingsTest {
     	
     	inkCost = 10 + 31.0;
     	Double ans = inkLengthBears.getRawCost(inkLength10);
-    	String message = "Length " + 10 + " caused failure";
-    	assertEquals(message, inkCost, ans);
+    	//System.out.println("ans -> " + ans + " =? " + inkCost);
+    	assertEquals(inkCost, ans);
     }
     
     private String randomLengthString(int r) {
