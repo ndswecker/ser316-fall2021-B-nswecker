@@ -248,6 +248,7 @@ public class BearWorkshop implements BearWorkshopInterface{
         
         List<Bear> cart = this.BearCart; // Make reference to a BearCart
         
+        
         double eachBearSavings = 0; // Start a savings for each individual bear at zero
         double allBearsSavings = 0; // Start a savings for all the bears together at zero
         

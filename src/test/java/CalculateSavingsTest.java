@@ -8,7 +8,7 @@ import java.util.Random;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import main.*;
+//import main.*;
 import main.java.Bear;
 import main.java.BearWorkshop;
 import main.java.Clothing;
