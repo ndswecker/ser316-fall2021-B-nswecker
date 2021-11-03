@@ -259,7 +259,7 @@ public class BearWorkshop implements BearWorkshopInterface{
             System.out.println(rawCost + " <- raw cost of bear " + i);
             System.out.println(cost + " <- actual cost of bear " + i);
             eachBearSavings += rawCost - cost;
-            System.out.println(eachBearSavings + " <<< savings at");
+            System.out.println(eachBearSavings + " <<< each savings at");
         }
         
         return eachBearSavings;

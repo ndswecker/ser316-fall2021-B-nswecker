@@ -133,7 +133,7 @@ public class CalculateSavingsTest {
     	
     	largeOrderExpected = 10323.0; 
     	Double ans = largeOrderBears.calculateSavings();
-    	//System.out.println("largeOrderBears.calculateSavings() --> " + ans);
+    	System.out.println("ans -> " + ans);
     	assertEquals(largeOrderExpected, ans);
     }
 
@@ -321,7 +321,7 @@ public class CalculateSavingsTest {
     /** Test embroidery length 10*/
     @Test
     public void inkLength10Cost() {
-    	System.out.println("inkLengthCost10()");
+    	System.out.println("\ninkLengthCost10()");
     	Double inkCost;
 		inkLengthBears = null;
     	try {
@@ -335,7 +335,7 @@ public class CalculateSavingsTest {
     	
     	inkCost = 10 + 31.0;
     	Double ans = inkLengthBears.getRawCost(inkLength10);
-    	//System.out.println("ans -> " + ans + " =? " + inkCost);
+    	System.out.println("ans -> " + ans + " =? " + inkCost);
     	assertEquals(inkCost, ans);
     }
     
