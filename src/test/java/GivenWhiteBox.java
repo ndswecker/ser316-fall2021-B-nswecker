@@ -8,14 +8,12 @@ import org.junit.Test;
 
 import main.java.BearWorkshop;
 
-
 public class GivenWhiteBox {
     BearWorkshop oneBear;
 
     @Before
     public void setUp() throws Exception {
     }
-
 
     @Test
     public void checkoutOneBear() {
