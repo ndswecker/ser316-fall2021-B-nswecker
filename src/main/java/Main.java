@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         // Fill me in!
 
-        Bear bear1 = new Bear(stuffing.FOAM);
+        Bear bear1 = new Bear(stuffing.FOAM);   
         Bear bear2 = new Bear(stuffing.BASE);
         Bear bear3 = new Bear(stuffing.DOWN);
 
