@@ -16,7 +16,7 @@ Class:	Bear
 
 Description:
 */
-public class Bear implements Comparable<Bear>{
+public class Bear implements Comparable<Bear> {
     public Casing casing;
     public Stuffing stuff;
     public Embroidery ink; 
@@ -49,7 +49,7 @@ public class Bear implements Comparable<Bear>{
 
     /**
     Method: setPrice()
-    Description:
+    Description: To be filled in
     @param incomingPrice
     @return void
   */
