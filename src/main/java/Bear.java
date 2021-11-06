@@ -12,14 +12,14 @@ import java.util.LinkedList;
 import main.java.Stuffing.stuffing;
 
 /**
-Class:	Bear
-
-Description:
-*/
+ * Class: Bear
+ * 
+ * Description:
+ */
 public class Bear implements Comparable<Bear> {
     public Casing casing;
     public Stuffing stuff;
-    public Embroidery ink; 
+    public Embroidery ink;
     public LinkedList<NoiseMaker> noisemakers; // accessory
     public LinkedList<Clothing> clothing; // accessory
     public double price;
@@ -27,7 +27,6 @@ public class Bear implements Comparable<Bear> {
     // bear has stuffing (req)
     // bear has a tattoo/emroider or not (opt)
     // bear has a noisemaker (opt)
-
 
     public Bear() {
         this.casing = new Casing();
@@ -48,26 +47,26 @@ public class Bear implements Comparable<Bear> {
     }
 
     /**
-    Method: setPrice()
-    Description: To be filled in
-    @param incomingPrice
-    @return void
-  */
+     * Method: setPrice() Description: To be filled in
+     * 
+     * @param incomingPrice
+     * @return void
+     */
     public void setPrice(double incomingPrice) {
         this.price = incomingPrice;
     }
-    
+
     /**
-    Method: addNoise()
-    Description: Adds NoiseMaker object to Bear object
-    @param noise
-    @return boolean
-  */
+     * Method: addNoise() Description: Adds NoiseMaker object to Bear object
+     * 
+     * @param noise
+     * @return boolean
+     */
     public boolean addNoise(NoiseMaker noise) {
         if (this.noisemakers.size() >= 5) {
             return false;
         } else {
-            for (NoiseMaker noisemaker: noisemakers) {
+            for (NoiseMaker noisemaker : noisemakers) {
                 if (noise.spot == noisemaker.spot) {
                     return false;
                 }
@@ -78,11 +77,12 @@ public class Bear implements Comparable<Bear> {
     }
 
     /**
-    Method: compareTo()
-    Description: Compares incoming bear price to this bear price
-    @param bear
-    @return int
-  */
+     * Method: compareTo() Description: Compares incoming bear price to this bear
+     * price
+     * 
+     * @param bear
+     * @return int
+     */
     @Override
     public int compareTo(Bear bear) {
         return new Double(this.price).compareTo(bear.price);

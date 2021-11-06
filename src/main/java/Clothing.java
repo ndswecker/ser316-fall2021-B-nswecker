@@ -9,15 +9,15 @@
 package main.java;
 
 /**
-Class:	Clothing
-
-Description:
-*/
+ * Class: Clothing
+ * 
+ * Description:
+ */
 public class Clothing implements Comparable<Clothing> {
     public double price;
     public String Description;
 
-    //  you can assume that the price of $4 per clothing item is correct
+    // you can assume that the price of $4 per clothing item is correct
     public Clothing() {
         this(4.00, "Generic Offtrack Separate");
 

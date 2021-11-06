@@ -9,10 +9,10 @@
 package main.java;
 
 /**
-Class:	Casing
-
-Description:
-*/
+ * Class: Casing
+ * 
+ * Description:
+ */
 public class Casing {
     double priceModifier;
 
