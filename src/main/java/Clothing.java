@@ -1,5 +1,18 @@
+/*
+  File:	Clothing.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
+/**
+Class:	Clothing
+
+Description:
+*/
 public class Clothing implements Comparable<Clothing> {
     public double price;
     public String Description;

@@ -1,5 +1,18 @@
+/*
+  File:	NoiseMaker.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
+/**
+Class:	NoiseMaker
+
+Description:
+*/
 public class NoiseMaker {
     public double price;
     String label;
