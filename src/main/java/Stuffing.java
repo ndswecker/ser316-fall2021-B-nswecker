@@ -9,7 +9,7 @@
 package main.java;
 
 /**
- * Class: Stuffing is of three types and required
+ * Class: Stuffing is of three types and required.
  * Description: stuffing is declared with enum
  */
 public class Stuffing {
@@ -20,6 +20,10 @@ public class Stuffing {
     stuffing polyStuffing;
     int price;
 
+    /** 
+     * Default constructor.
+     * @param interiorStuffing of class stuffing
+     * */
     public Stuffing(stuffing interiorStuffing) {
 
         switch (interiorStuffing) {
