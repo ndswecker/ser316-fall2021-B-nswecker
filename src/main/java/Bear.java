@@ -1,9 +1,9 @@
 /*
-  File:	Bear.java
-  Author:	SER 316
-  Date:	Fall B 2021
+File:	Bear.java
+Author:	SER 316
+Date:	Fall B 2021
   
-  Description:
+Description:
 */
 
 package main.java;
