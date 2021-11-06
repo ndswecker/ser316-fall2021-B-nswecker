@@ -1,7 +1,7 @@
 /*
-  File:	BearWorkshopInterface.java
-  Author:	SER 316
-  Date:	Fall B 2021
+  File:     BearWorkshopInterface.java
+  Author:   SER 316
+  Date:     Fall B 2021
   
   Description:
 */
