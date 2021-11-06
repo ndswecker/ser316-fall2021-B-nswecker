@@ -1,7 +1,7 @@
 /*
-  File: Main.java
-  Author:	SER 316
-  Date:	Fall B 2021
+  File:     Main.java
+  Author:   SER 316
+  Date:     Fall B 2021
   
   Description:
 */
@@ -14,8 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Class: BearWorkshop
- * 
+ * Class: BearWorkshop.
  * Description: This class provides functionality for a BearWorkshop class.
  */
 public class BearWorkshop implements BearWorkshopInterface {
@@ -32,7 +31,7 @@ public class BearWorkshop implements BearWorkshopInterface {
     }
 
     /**
-     * This is a parameterized ctor for a BearWorkshop
+     * This is a parameterized ctor for a BearWorkshop.
      * 
      * @param state customer is in
      */
@@ -90,6 +89,9 @@ public class BearWorkshop implements BearWorkshopInterface {
         return bear.price;
     }
 
+    /**
+     * Get cost of a bear without any discounts.
+     * */
     // Function to get the raw cost of a bear without any discounts
     // TODO: test me and fix me in assignment 3
     public double getRawCost(Bear bear) {
@@ -124,24 +126,24 @@ public class BearWorkshop implements BearWorkshopInterface {
     public double calculateTax() {
         double tax;
         switch (customer.state) {
-        case "AZ":
-            tax = 1.07;
-            break;
-        case "NY":
-            tax = 1.09;
-            break;
-        case "VA":
-            tax = 1.05;
-            break;
-        case "DC":
-            tax = 1.105;
-            break;
-        case "CA":
-            tax = 1.1;
-            break;
-        default:
-            tax = 1.05;
-            break;
+            case "AZ":
+                tax = 1.07;
+                break;
+            case "NY":
+                tax = 1.09;
+                break;
+            case "VA":
+                tax = 1.05;
+                break;
+            case "DC":
+                tax = 1.105;
+                break;
+            case "CA":
+                tax = 1.1;
+                break;
+            default:
+                tax = 1.05;
+                break;
         }
         return tax;
     }
@@ -182,8 +184,9 @@ public class BearWorkshop implements BearWorkshopInterface {
     @Override
     public double checkout() {
         if (this.customer.age <= 13) {
-            if (this.customer.parent.age < 18)
+            if (this.customer.parent.age < 18) {
                 System.out.println("Guardian is too young");
+            }
             return -1;
         }
         double temp = 0;
