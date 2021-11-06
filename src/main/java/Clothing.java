@@ -1,7 +1,7 @@
 /*
-  File:	Clothing.java
-  Author:	SER 316
-  Date:	Fall B 2021
+  File:     Clothing.java
+  Author:   SER 316
+  Date:     Fall B 2021
   
   Description:
 */
@@ -9,9 +9,8 @@
 package main.java;
 
 /**
- * Class: Clothing
- * 
- * Description:
+ * Class: Clothing.
+ * Description: Any kind of clothing item can be made.
  */
 public class Clothing implements Comparable<Clothing> {
     public double price;
@@ -22,7 +21,11 @@ public class Clothing implements Comparable<Clothing> {
         this(4.00, "Generic Offtrack Separate");
 
     }
-
+    /**
+     * Main constructor.
+     * @param price is set price.
+     * @param descr is a string that describes the clothing item.
+     **/
     public Clothing(double price, String descr) {
         this.price = price;
         this.Description = descr;
