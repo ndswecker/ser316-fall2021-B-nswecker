@@ -31,10 +31,13 @@ public class Clothing implements Comparable<Clothing> {
         this.Description = descr;
     }
 
+    // Changed to meet spotbugs recc.
     public int compareTo(Clothing clothes) {
-        if (clothes.price > this.price) {
+        //if (clothes.price > this.price) {
+        if (Double.compare(clothes.price, this.price) > 0) {
             return 1;
-        } else if (clothes.price < this.price) {
+        //} else if (clothes.price < this.price) {
+        } else if (Double.compare(clothes.price, this.price) < 0) {
             return -1;
         } else {
             return 0;
