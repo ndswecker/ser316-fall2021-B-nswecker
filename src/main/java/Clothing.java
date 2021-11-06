@@ -14,7 +14,7 @@ package main.java;
  */
 public class Clothing implements Comparable<Clothing> {
     public double price;
-    public String Description;
+    public String description; // SER316 TASK 2 SPOTBUGS FIX
 
     // you can assume that the price of $4 per clothing item is correct
     public Clothing() {
@@ -28,7 +28,7 @@ public class Clothing implements Comparable<Clothing> {
      **/
     public Clothing(double price, String descr) {
         this.price = price;
-        this.Description = descr;
+        this.description = descr; // SER316 TASK 2 SPOTBUGS FIX
     }
 
     // Changed to meet spotbugs recc.
