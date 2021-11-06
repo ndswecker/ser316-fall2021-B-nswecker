@@ -1,5 +1,18 @@
+/*
+  File:	Stuffing.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
+/**
+Class:	Stuffing
+
+Description:
+*/
 public class Stuffing {
     public enum stuffing {
         BASE,

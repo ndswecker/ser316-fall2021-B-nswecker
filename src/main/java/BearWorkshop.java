@@ -1,8 +1,23 @@
+/*
+  File: Main.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-// This class provides functionality for a BearWorkshop class.
+/**
+Class:	BearWorkshop
+
+Description: This class provides functionality for a BearWorkshop class.
+*/
 public class BearWorkshop implements BearWorkshopInterface{
     // Workshop has a collection of bears
     // Workshop has a customer
@@ -24,6 +39,7 @@ public class BearWorkshop implements BearWorkshopInterface{
         BearCart = new LinkedList<>();
         customer = new Customer(state);
     }
+    
 
     /**
      * This is a convenience method to calculate the cost of one bears in the
@@ -36,15 +52,17 @@ public class BearWorkshop implements BearWorkshopInterface{
     @Override
     public double getCost(Bear bear) {
         Collections.sort(bear.clothing);
-        int numFree = bear.clothing.size() / 3;
+        int numFree = bear.clothing.size() / CLOTHING_DISCOUNT;
+        System.out.println("CLOTHING_DISCOUNT -> " + numFree);
         ArrayList<Clothing> freeClothes = new ArrayList<>();
-
-        for (int i = 0; i < bear.clothing.size(); i++) {
+        
+    	for (int i = 0; i < bear.clothing.size(); i++) {
             Clothing clothes = bear.clothing.get(i);
             if (i < numFree) {
                 freeClothes.add(clothes);
             } else {
                 bear.price += clothes.price;
+                System.out.println("adding " + clothes.Description + " to the price");
             }
         }
 
@@ -52,12 +70,21 @@ public class BearWorkshop implements BearWorkshopInterface{
             bear.price += noise.price;
         }
 
-        if (bear.ink != null) {
-            bear.price += bear.ink.price;
-        }
-
         bear.price += bear.stuff.price;
         bear.price += bear.casing.priceModifier;
+        
+        if (bear.ink != null) {
+        	double inkPrice = bear.ink.price;
+        	System.out.println("ink price -> " + inkPrice);
+        	// if bear price is < 70, the ink price is added into the cost
+        	if (bear.price <= 70) {
+        		System.out.println("bear is " + bear.price + " , and so ink cost is added");
+        		bear.price += bear.ink.price;
+        	} else {
+        		System.out.println("bear is > $70, so ink is free");
+        		System.out.println("price now at -> " + bear.price);
+        	}
+        }
 
         return bear.price;
     }
@@ -217,8 +244,26 @@ public class BearWorkshop implements BearWorkshopInterface{
      * @return the savings if the customer would check with the current bears in the workshop out as double
      */
     public double calculateSavings() {
-        System.out.println("TODO: Implement me in Assignment 3");
-        return 0.0;
+        //System.out.println("TODO: Implement me in Assignment 3");
+        
+        List<Bear> cart = this.BearCart; // Make reference to a BearCart
+        
+        
+        double eachBearSavings = 0; // Start a savings for each individual bear at zero
+        double allBearsSavings = 0; // Start a savings for all the bears together at zero
+        
+        // Iterate thru all bears in the BearCart
+        for (int i = 0; i < cart.size(); i++) {
+            Bear bear = cart.get(i); // Select each bear
+            double rawCost = getRawCost(bear); // Find raw cost of each bear
+            double cost = getCost(bear); // Find the cost of each bear
+            System.out.println(rawCost + " <- raw cost of bear " + i);
+            System.out.println(cost + " <- actual cost of bear " + i);
+            eachBearSavings += rawCost - cost;
+            System.out.println(eachBearSavings + " <<< each savings at");
+        }
+        
+        return eachBearSavings;
     }
     
  

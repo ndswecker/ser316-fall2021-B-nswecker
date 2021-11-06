@@ -1,5 +1,18 @@
+/*
+  File:	Casing.java
+  Author:	SER 316
+  Date:	Fall B 2021
+  
+  Description:
+*/
+
 package main.java;
 
+/**
+Class:	Casing
+
+Description:
+*/
 public class Casing {
     double priceModifier;
 
