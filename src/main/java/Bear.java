@@ -8,8 +8,8 @@ Description:
 
 package main.java;
 
-import main.java.Stuffing.stuffing;
 import java.util.LinkedList;
+import main.java.Stuffing.stuffing;
 
 /**
 Class:	Bear
