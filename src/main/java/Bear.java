@@ -9,7 +9,7 @@ Description:
 package main.java;
 
 import java.util.LinkedList;
-import main.java.Stuffing.stuffing;
+import main.java.Stuffing.Stuff;
 
 /**
  * Class: Bear.
@@ -31,7 +31,7 @@ public class Bear implements Comparable<Bear> {
  */
     public Bear() {
         this.casing = new Casing();
-        this.stuff = new Stuffing(stuffing.BASE);
+        this.stuff = new Stuffing(Stuff.BASE);
         noisemakers = new LinkedList<>();
         clothing = new LinkedList<>();
         ink = new Embroidery("");
@@ -41,7 +41,7 @@ public class Bear implements Comparable<Bear> {
  * Start with stuffing constructor for Bear class
  * @param stuff is of class Stuffing 
 */
-    public Bear(stuffing stuff) {
+    public Bear(Stuff stuff) {
         this.casing = new Casing();
         this.stuff = new Stuffing(stuff);
         noisemakers = new LinkedList<>();

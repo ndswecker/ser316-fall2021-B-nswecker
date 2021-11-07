@@ -72,7 +72,7 @@ public class CalculateSavingsTest {
      */
     @Test
     public void oneBearNoSavings() {
-        // One Bear base stuffing, no saving expected
+        // One Bear base Stuff, no saving expected
 
         BearWorkshop oneBear = null;
         try {
@@ -80,7 +80,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        oneBear.addBear(new Bear(Stuffing.stuffing.BASE)); // $30 stuffing + $1 casing -- should be no savings at all
+        oneBear.addBear(new Bear(Stuffing.Stuff.BASE)); // $30 Stuff + $1 casing -- should be no savings at all
         oneBearExpected = 0.00; // no savings since no clothing
 
         Double ans = oneBear.calculateSavings();
@@ -98,9 +98,9 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        threeBears.addBear(new Bear(Stuffing.stuffing.BASE)); // this is the cheapest one
-        threeBears.addBear(new Bear(Stuffing.stuffing.DOWN));
-        threeBears.addBear(new Bear(Stuffing.stuffing.FOAM));
+        threeBears.addBear(new Bear(Stuffing.Stuff.BASE)); // this is the cheapest one
+        threeBears.addBear(new Bear(Stuffing.Stuff.DOWN));
+        threeBears.addBear(new Bear(Stuffing.Stuff.FOAM));
         threeBearsExpected = 31.00;
 
         Double ans = threeBears.calculateSavings();
@@ -124,9 +124,9 @@ public class CalculateSavingsTest {
         }
         int i;
         for (i = 0; i < 333; i++) {
-            largeOrderBears.addBear(new Bear(Stuffing.stuffing.BASE)); // 31
-            largeOrderBears.addBear(new Bear(Stuffing.stuffing.DOWN)); // 41
-            largeOrderBears.addBear(new Bear(Stuffing.stuffing.FOAM)); // 51
+            largeOrderBears.addBear(new Bear(Stuffing.Stuff.BASE)); // 31
+            largeOrderBears.addBear(new Bear(Stuffing.Stuff.DOWN)); // 41
+            largeOrderBears.addBear(new Bear(Stuffing.Stuff.FOAM)); // 51
         }
 
         // 41*333 + 51*333 = 30636 (31*333 = 10323 savings)
@@ -147,7 +147,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear customBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear customBear = new Bear(Stuffing.Stuff.BASE); // $31
         bears.addBear(customBear);
 
         customBear.clothing.add(new Clothing(4, "Hat")); // $35
@@ -175,7 +175,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear customBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear customBear = new Bear(Stuffing.Stuff.BASE); // $31
         bears.addBear(customBear);
 
         for (int i = 0; i < 14; i++) {
@@ -209,7 +209,7 @@ public class CalculateSavingsTest {
             freeInkBears = createBearWorkshop("InkLandia"); // The land of free ink
         } catch (Exception e) {
         }
-        Bear freeInkBear = new Bear(Stuffing.stuffing.FOAM); // $51
+        Bear freeInkBear = new Bear(Stuffing.Stuff.FOAM); // $51
         freeInkBears.addBear(freeInkBear);
         freeInkBear.clothing.add(new Clothing(20, "Expensive Hat")); // $71
         freeInkBear.ink = new Embroidery("I love you");
@@ -230,7 +230,7 @@ public class CalculateSavingsTest {
             freeInkBears = createBearWorkshop("Inkless");
         } catch (Exception e) {
         }
-        Bear costInkBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear costInkBear = new Bear(Stuffing.Stuff.BASE); // $31
         costInkBear.ink = new Embroidery("I love you");
         freeInkBears.addBear(costInkBear);
 
@@ -254,7 +254,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear inkLength1 = new Bear(Stuffing.Stuff.BASE); // $31
         inkLength1.ink = new Embroidery(randomLengthString(10));
         inkLengthBears.addBear(inkLength1);
 
@@ -274,7 +274,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear inkLength0 = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear inkLength0 = new Bear(Stuffing.Stuff.BASE); // $31
         inkLength0.ink = new Embroidery(randomLengthString(0));
         inkLengthBears.addBear(inkLength0);
 
@@ -294,7 +294,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear inkLength1 = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear inkLength1 = new Bear(Stuffing.Stuff.BASE); // $31
         inkLength1.ink = new Embroidery(randomLengthString(1));
         inkLengthBears.addBear(inkLength1);
 
@@ -314,7 +314,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear inkLength5 = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear inkLength5 = new Bear(Stuffing.Stuff.BASE); // $31
         inkLength5.ink = new Embroidery(randomLengthString(5));
         inkLengthBears.addBear(inkLength5);
 
@@ -335,7 +335,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear inkLength10 = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear inkLength10 = new Bear(Stuffing.Stuff.BASE); // $31
         inkLength10.ink = new Embroidery(randomLengthString(10));
         inkLengthBears.addBear(inkLength10);
 
@@ -362,7 +362,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        // Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+        // Bear loudBear = new Bear(Stuffing.Stuff.BASE); // $31
         // loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase",
         // Location.CENTERBODY));
         Bear loudBear = testAnyNoiseMaker(1);
@@ -385,7 +385,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        // Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+        // Bear loudBear = new Bear(Stuffing.Stuff.BASE); // $31
         // loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase",
         // Location.CENTERBODY));
         Bear loudBear = testAnyNoiseMaker(2);
@@ -410,7 +410,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear loudBear = new Bear(Stuffing.Stuff.BASE); // $31
         int[] multiNoise = { 1, 2, 0 };
         loudBear = testAnyNoiseMaker(multiNoise, loudBear);
         noisyBears.addBear(loudBear);
@@ -432,7 +432,7 @@ public class CalculateSavingsTest {
         } catch (Exception e) {
         }
 
-        Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear loudBear = new Bear(Stuffing.Stuff.BASE); // $31
         int[] multiNoise = { 0, 2, 3 };
         loudBear = testAnyNoiseMaker(multiNoise, loudBear);
         noisyBears.addBear(loudBear);
@@ -446,7 +446,7 @@ public class CalculateSavingsTest {
     }
 
     private Bear testAnyNoiseMaker(int locale) {
-        Bear loudBear = new Bear(Stuffing.stuffing.BASE); // $31
+        Bear loudBear = new Bear(Stuffing.Stuff.BASE); // $31
         if (locale == 1) {
             loudBear.addNoise(new NoiseMaker("testLabel", "testPhrase", Location.CENTERBODY));
         } else if (locale == 2) {
