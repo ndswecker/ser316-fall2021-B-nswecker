@@ -13,7 +13,7 @@ package main.java;
  * Description: stuffing is declared with enum
  */
 public class Stuffing {
-    public enum stuffing {
+    public enum stuffing { // SER316 TASK 2 SPOTBUGS FIX. This should not be changed
         BASE, DOWN, FOAM
     }
 
