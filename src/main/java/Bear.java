@@ -84,6 +84,7 @@ public class Bear implements Comparable<Bear> {
     @Override
     public int compareTo(Bear bear) {
         int comp;
+        // SER316 TASK 2 SPOTBUGS FIX
         comp = Double.compare(this.price, bear.price);
         //return new Double(this.price).compareTo(bear.price);
         return comp;

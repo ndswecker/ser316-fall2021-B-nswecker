@@ -62,7 +62,7 @@ public class BearWorkshop implements BearWorkshopInterface {
                 freeClothes.add(clothes);
             } else {
                 bear.price += clothes.price;
-                System.out.println("adding " + clothes.Description + " to the price");
+                System.out.println("adding " + clothes.description + " to the price");
             }
         }
 
