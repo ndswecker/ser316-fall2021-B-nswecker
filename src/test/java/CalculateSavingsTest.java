@@ -362,7 +362,7 @@ public class CalculateSavingsTest {
 
     /** Test how much a center noise maker adds to the raw cost of a bear */
     @Test
-    public void NoiseMakerCenter() {
+    public void noiseMakerCenter() { // SER316 TASK 2 SPOTBUGS FIX
         noisyBears = null;
         try {
             noisyBears = createBearWorkshop("BoomLand");
@@ -385,7 +385,7 @@ public class CalculateSavingsTest {
 
     /** Test how much a limb noise maker adds to the raw cost of a bear */
     @Test
-    public void NoiseMakerOuter() {
+    public void noiseMakerOuter() { // SER316 TASK 2 SPOTBUGS FIX
         noisyBears = null;
         try {
             noisyBears = createBearWorkshop("BoomLand");
@@ -410,7 +410,7 @@ public class CalculateSavingsTest {
      * Test how much a center and limb noise maker adds to the raw cost of a bear
      */
     @Test
-    public void NoiseMakerMultiple() {
+    public void noiseMakerMultiple() { // SER316 TASK 2 SPOTBUGS FIX
         noisyBears = null;
         try {
             noisyBears = createBearWorkshop("BoomLand");
@@ -432,7 +432,7 @@ public class CalculateSavingsTest {
 
     /** Test how much two limb noises maker adds to the raw cost of a bear */
     @Test
-    public void NoiseMakerMultipleLimbs() {
+    public void noiseMakerMultipleLimbs() { // SER316 TASK 2 SPOTBUGS FIX
         noisyBears = null;
         try {
             noisyBears = createBearWorkshop("BoomLand");
