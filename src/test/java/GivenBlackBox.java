@@ -68,6 +68,7 @@ public class GivenBlackBox {
 
     BearWorkshop noisyBears;
     Double noiseExpected;
+    private static final Random RANDOM = new Random();  // SER316 TASK2 SPOTBUGS FIX
 
     @Before
     public void setUp() throws Exception {
@@ -191,10 +192,14 @@ public class GivenBlackBox {
         Bear customBear = new Bear(Stuffing.Stuff.BASE); // $31
         bears.addBear(customBear);
 
-        for (int i = 0; i < 15; i++) {
+        // SER316 TASK 2 SPOTBUGS FIX 
+        byte[] array = new byte[7]; // length is bounded by 7
+        
+        for (int i = 0; i < 14; i++) {
             // Make a random name for each of the accessories
-            byte[] array = new byte[7]; // length is bounded by 7
-            new Random().nextBytes(array);
+            array = new byte[7]; // length is bounded by 7
+            RANDOM.nextBytes(array); // SER316 TASK 2 SPOTBUGS FIX
+            //new Random().nextBytes(array);
             String generatedString = new String(array, Charset.forName("UTF-8"));
             customBear.clothing.add(new Clothing(4, generatedString)); // $35
         }
@@ -356,7 +361,8 @@ public class GivenBlackBox {
     private String randomLengthString(int r) {
         // Make a random name for each of the accessories
         byte[] array = new byte[r]; // length is bounded by 7
-        new Random().nextBytes(array);
+        //new Random().nextBytes(array);
+        RANDOM.nextBytes(array);  // SER316 TASK 2 SPOTBUGS FIX
         String generatedString = new String(array, Charset.forName("UTF-8"));
         return generatedString;
     }
