@@ -15,7 +15,7 @@ package main.java;
  * Description: A string may be "embroidered" on a bear using ink.
  */
 public class Embroidery {
-    final double pricePerLetter = 1.00;
+    static final double PRICE_PER_LETTER = 1.00; // SER316 TASK 2 SPOTBUGS FIX
     double price;
     String embroidText;
     /** 
@@ -24,6 +24,6 @@ public class Embroidery {
      */
     public Embroidery(String embroidery) {
         this.embroidText = embroidery;
-        this.price = embroidery.length() * pricePerLetter;
+        this.price = embroidery.length() * PRICE_PER_LETTER;
     }
 }
