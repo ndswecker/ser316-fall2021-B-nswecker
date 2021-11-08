@@ -212,7 +212,7 @@ public class BearWorkshop implements BearWorkshopInterface {
         }
         savings += rawCost - cost; // calc delta between raw and prorated cost
 
-        List<Bear> nonFreeBears = new LinkedList<>();
+        List<Bear> nonFreeBears = new LinkedList<>();  // DLS_DEAD_LOCAL_STORE: Dead store to local variable IGNORE
         int counter = 0;
         int numberOfFreeBearsInBearCart = BearCart.size() / 3;
         double discountedCost = 0;
@@ -220,7 +220,7 @@ public class BearWorkshop implements BearWorkshopInterface {
 
         for (int count = 0; count <= numberOfFreeBearsInBearCart; ++count) {
             for (Bear bear : BearCart) {
-                if (freeBear != null && bear.price < freeBear.price) // SER316 TASK 2 SPOTBUGS FIX
+                if (freeBear != null && bear.price < freeBear.price) // SER316 TASK 2 SPOTBUGS FIX (Decided to not fix)
                     freeBear = bear;
                 temp += temp - temp * 2 + bear.price;
 
