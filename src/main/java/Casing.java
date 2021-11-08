@@ -13,6 +13,7 @@ package main.java;
  * Description: A required part of the bear that makes the cloth shell.
  */
 public class Casing {
+    
     double priceModifier;
 
     String description;

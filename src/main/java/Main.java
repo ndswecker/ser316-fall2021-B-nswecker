@@ -14,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Fill me in!
+        @SuppressWarnings("URF_UNREAD_FIELD") 
 
         Bear bear1 = new Bear(Stuff.FOAM);   
         Bear bear2 = new Bear(Stuff.BASE);
