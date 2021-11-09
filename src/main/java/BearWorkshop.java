@@ -21,10 +21,10 @@ public class BearWorkshop implements BearWorkshopInterface {
     // Workshop has a collection of bears
     // Workshop has a customer
     Customer customer;
-    List<Bear> BearCart;
+    List<Bear> bearCart;
 
     /**
-     * Default constructor for the Bear Workshop
+     * Default constructor for the Bear Workshop.
      */
     public BearWorkshop() {
         this("AZ");
@@ -36,7 +36,7 @@ public class BearWorkshop implements BearWorkshopInterface {
      * @param state customer is in
      */
     public BearWorkshop(String state) {
-        BearCart = new LinkedList<>();
+        bearCart = new LinkedList<>();
         customer = new Customer(state);
     }
 
@@ -157,7 +157,7 @@ public class BearWorkshop implements BearWorkshopInterface {
      */
     @Override
     public boolean addBear(Bear bear) {
-        if (this.BearCart.add(bear)) {
+        if (this.bearCart.add(bear)) {
             return true;
         } else {
             return false;
@@ -167,7 +167,7 @@ public class BearWorkshop implements BearWorkshopInterface {
     // Simple means to remove a bear from the shopping cart
     @Override
     public boolean removeBear(Bear bear) {
-        if (this.BearCart.remove(bear)) {
+        if (this.bearCart.remove(bear)) {
             return true;
         } else {
             return false;
@@ -190,38 +190,40 @@ public class BearWorkshop implements BearWorkshopInterface {
             return -1;
         }
         double temp = 0;
-        Double Cost = Double.valueOf(0.00);
-        for (Bear bear : BearCart) {
-            Cost = Cost + getRawCost(bear);
+        Double cost = Double.valueOf(0.00);
+        for (Bear bear : bearCart) {
+            cost = cost + getRawCost(bear);
         }
-        for (Bear bear : this.BearCart) {
+        for (Bear bear : this.bearCart) {
             temp += getCost(bear);
         }
 
         double savings = 0;
         // calculate total cost
         double rawCost = 0;
-        for (Bear bear : BearCart) {
+        for (Bear bear : bearCart) {
             rawCost += this.getRawCost(bear);
         }
 
         // calculate adjusted cost
-        double cost = 0;
-        for (Bear bear : this.BearCart) {
+        cost = 0.0;
+        for (Bear bear : this.bearCart) {
             cost += this.getCost(bear);
         }
         savings += rawCost - cost; // calc delta between raw and prorated cost
 
-        List<Bear> nonFreeBears = new LinkedList<>();  // DLS_DEAD_LOCAL_STORE: Dead store to local variable IGNORE
+     // DLS_DEAD_LOCAL_STORE: Dead store to local variable IGNORE
+        List<Bear> nonFreeBears = new LinkedList<>();
         int counter = 0;
-        int numberOfFreeBearsInBearCart = BearCart.size() / 3;
+        int numberOfFreeBearsInbearCart = bearCart.size() / 3;
         double discountedCost = 0;
         Bear freeBear = null;
 
-        for (int count = 0; count <= numberOfFreeBearsInBearCart; ++count) {
-            for (Bear bear : BearCart) {
-                if (freeBear != null && bear.price < freeBear.price) // SER316 TASK 2 SPOTBUGS FIX (Decided to not fix)
+        for (int count = 0; count <= numberOfFreeBearsInbearCart; ++count) {
+            for (Bear bear : bearCart) {
+                if (freeBear != null && bear.price < freeBear.price) { // SER316 TASK 2 SPOTBUGS FIX (Decided to not fix)
                     freeBear = bear;
+                }
                 temp += temp - temp * 2 + bear.price;
 
             }
@@ -260,12 +262,12 @@ public class BearWorkshop implements BearWorkshopInterface {
     public double calculateSavings() {
         // System.out.println("TODO: Implement me in Assignment 3");
 
-        List<Bear> cart = this.BearCart; // Make reference to a BearCart
+        List<Bear> cart = this.bearCart; // Make reference to a bearCart
 
         double eachBearSavings = 0; // Start a savings for each individual bear at zero
         double allBearsSavings = 0; // Start a savings for all the bears together at zero
 
-        // Iterate thru all bears in the BearCart
+        // Iterate thru all bears in the bearCart
         for (int i = 0; i < cart.size(); i++) {
             Bear bear = cart.get(i); // Select each bear
             double rawCost = getRawCost(bear); // Find raw cost of each bear
