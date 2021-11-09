@@ -26,9 +26,10 @@ public class Bear implements Comparable<Bear> {
     // bear has stuffing (req)
     // bear has a tattoo/emroider or not (opt)
     // bear has a noisemaker (opt)
-/**
- * Default constructor for Bear class.
- */
+    
+    /**
+     * Default constructor for Bear class.
+     */
     public Bear() {
         this.casing = new Casing();
         this.stuff = new Stuffing(Stuff.BASE);
@@ -39,7 +40,7 @@ public class Bear implements Comparable<Bear> {
     }
 /**
  * Start with stuffing constructor for Bear class
- * @param stuff is of class Stuffing 
+ * @param stuff represents an object of type Stuff 
 */
     public Bear(Stuff stuff) {
         this.casing = new Casing();
@@ -100,17 +101,22 @@ public class Bear implements Comparable<Bear> {
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Bear other = (Bear) obj;
-        if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+        if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price)) {
             return false;
+        }
         return true;
     }
 }
