@@ -1,7 +1,7 @@
 /*
-  File:	NoiseMaker.java
-  Author:	SER 316
-  Date:	Fall B 2021
+  File:     NoiseMaker.java
+  Author:   SER 316
+  Date:     Fall B 2021
   
   Description:
 */
@@ -9,10 +9,9 @@
 package main.java;
 
 /**
-Class:	NoiseMaker
-
-Description:
-*/
+ * Class: NoiseMaker.
+ * Description: An object that has a string recording and a location.
+ */
 public class NoiseMaker {
     public double price;
     String label;
@@ -24,8 +23,13 @@ public class NoiseMaker {
         this("Default Noise", "I wuv you", Location.CENTERBODY);
     }
 
-    public NoiseMaker(String label, String recording,
-                      Location location) {
+    /**
+     * Main constructor
+     * @param label is a string for identifying.
+     * @param  recording is a string that would be vocalized.
+     * @param location is a location in the bear specified by an enum.
+     */
+    public NoiseMaker(String label, String recording, Location location) {
         this.label = label;
         this.recording = recording;
         this.spot = location;
@@ -40,10 +44,7 @@ public class NoiseMaker {
         }
     }
 
-
     public enum Location {
         RIGHT_HAND, LEFT_HAND, RIGHT_FOOT, LEFT_FOOT, CENTERBODY
     }
 }
-
-

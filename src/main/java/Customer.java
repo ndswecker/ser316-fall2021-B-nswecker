@@ -1,7 +1,7 @@
 /*
-  File:	Customer.java
-  Author:	SER 316
-  Date:	Fall B 2021
+  File:     Customer.java
+  Author:   SER 316
+  Date:     Fall B 2021
   
   Description:
 */
@@ -11,10 +11,9 @@ package main.java;
 import java.util.UUID;
 
 /**
-Class:	Customer
-
-Description: This a class for Customer in the Bear Workshop.
-*/
+ * Class: Customer.
+ * Description: This a class for Customer in the Bear Workshop.
+ */
 public class Customer {
     int age;
 
@@ -26,7 +25,7 @@ public class Customer {
     public String state;
 
     /**
-     * Default ctor with state
+     * Default ctor with state.
      */
     public Customer(String state) {
         this.state = state;
@@ -34,8 +33,9 @@ public class Customer {
     }
 
     /**
-     * Parameterized ctor for Customers
-     * @param age int age of customer
+     * Parameterized ctor for Customers.
+     * 
+     * @param age      int age of customer
      * @param custumer reference to guardian or null
      */
     public Customer(int age, String state, Customer custumer) {
@@ -45,7 +45,5 @@ public class Customer {
 
         this.state = state;
     }
-
-
 
 }
