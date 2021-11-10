@@ -302,12 +302,12 @@ public class BearWorkshop implements BearWorkshopInterface {
     /** 
      * sortBears method to sort the bearCart from lowest to highest price
      * */
-    public void sortBears(){
+    public void sortBears() {
         List<Bear> cart;
         cart = this.bearCart;
         System.out.println("Unsorted");
         Bear test = null;
-        for (int i=0; i<cart.size(); i++) {
+        for (int i = 0; i< cart.size(); i++) {
             test = cart.get(i);
             test.price = getRawCost(test);
             System.out.println("Unsorted Price" + test.price);
@@ -316,18 +316,17 @@ public class BearWorkshop implements BearWorkshopInterface {
         Collections.sort(cart, new SortByPrice());
         
         System.out.println("Sorted by price");
-        for (int i=0; i<cart.size(); i++) {
+        for (int i = 0; i < cart.size(); i++) {
             System.out.println(bearCart.get(i).price);
         }
     }
     
     /** 
      * Class: sortByPrice
-     * Description: a private class that implements a comparator used to sort bears by price
+     * Description: a private class that implements a comparator used to sort bears by price.
      * */
-    class SortByPrice implements Comparator<Bear>{
-        public int compare(Bear a, Bear b)
-        {
+    class SortByPrice implements Comparator<Bear> {
+        public int compare(Bear a, Bear b){
             return (int) (a.price - b.price);
         }
     }
