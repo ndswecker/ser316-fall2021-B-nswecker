@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.lang.reflect.Constructor;
 import java.nio.charset.Charset;
 import java.util.Random;
+import java.util.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -135,7 +136,7 @@ public class CalculateSavingsTest {
 
         largeOrderExpected = 10323.0;
         Double ans = largeOrderBears.calculateSavings();
-        System.out.println("ans -> " + ans);
+        //System.out.println("ans -> " + ans);
         assertEquals(largeOrderExpected, ans);
     }
 
@@ -491,6 +492,35 @@ public class CalculateSavingsTest {
     public void customerFullMake() {
         Customer test = new Customer(20, "TE", null);
         assertEquals(test.state, "TE");
+    }
+    
+    @Test
+    public void checkoutTest() {
+        threeBears = null;
+        try {
+            threeBears = createBearWorkshop("AZ");
+        } catch (Exception e) {
+        }
+        
+//        Bear first = new Bear(Stuffing.Stuff.BASE);
+//        Bear second = new Bear(Stuffing.Stuff.FOAM);
+//        Bear third = new Bear(Stuffing.Stuff.DOWN);
+        
+        for (int i = 0; i < 2; i++) {
+            threeBears.addBear(new Bear(Stuffing.Stuff.BASE));
+            threeBears.addBear(new Bear(Stuffing.Stuff.FOAM));
+            threeBears.addBear(new Bear(Stuffing.Stuff.DOWN));
+        }
+        
+//        threeBears.addBear(first);
+//        threeBears.addBear(second);
+//        threeBears.addBear(third);
+        
+        threeBears.sortBears();
+        
+        double exp = threeBears.checkout();
+        System.out.println("CheckoutTest() bear cart size >>> " + threeBears.getCart().size());
+        System.out.println("CheckoutTest() >>> " + exp);
     }
 
 }

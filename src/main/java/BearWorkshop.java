@@ -39,6 +39,13 @@ public class BearWorkshop implements BearWorkshopInterface {
         bearCart = new LinkedList<>();
         customer = new Customer(state);
     }
+    
+    /**
+     * Getter for the list of bears in the cart
+     * */
+    public List<Bear> getCart(){
+        return this.bearCart;
+    }
 
     /**
      * This is a convenience method to calculate the cost of one bears in the
@@ -50,10 +57,10 @@ public class BearWorkshop implements BearWorkshopInterface {
      *         assignment 3
      */
     @Override
-    public double getCost(Bear bear) {
+    public double getCost(Bear bear) { 
         Collections.sort(bear.clothing);
         int numFree = bear.clothing.size() / CLOTHING_DISCOUNT;
-        System.out.println("CLOTHING_DISCOUNT -> " + numFree);
+        //System.out.println("CLOTHING_DISCOUNT -> " + numFree);
         ArrayList<Clothing> freeClothes = new ArrayList<>();
 
         for (int i = 0; i < bear.clothing.size(); i++) {
@@ -62,7 +69,7 @@ public class BearWorkshop implements BearWorkshopInterface {
                 freeClothes.add(clothes);
             } else {
                 bear.price += clothes.price;
-                System.out.println("adding " + clothes.description + " to the price");
+                //System.out.println("adding " + clothes.description + " to the price");
             }
         }
 
@@ -75,10 +82,10 @@ public class BearWorkshop implements BearWorkshopInterface {
 
         if (bear.ink != null) {
             double inkPrice = bear.ink.price;
-            System.out.println("ink price -> " + inkPrice);
+            //System.out.println("ink price -> " + inkPrice);
             // if bear price is < 70, the ink price is added into the cost
             if (bear.price <= 70) {
-                System.out.println("bear is " + bear.price + " , and so ink cost is added");
+                //System.out.println("bear is " + bear.price + " , and so ink cost is added");
                 bear.price += bear.ink.price;
             } else {
                 System.out.println("bear is > $70, so ink is free");
@@ -114,6 +121,8 @@ public class BearWorkshop implements BearWorkshopInterface {
 
         double bearPrice = bear.price;
         bear.price = 0;
+        System.out.println("\ngetRawCost() return value >>> " + bearPrice);
+        bear.price = bearPrice;
         return bearPrice;
     }
 
@@ -189,20 +198,27 @@ public class BearWorkshop implements BearWorkshopInterface {
             }
             return -1;
         }
+        
         double temp = 0;
         Double cost = Double.valueOf(0.00);
         for (Bear bear : bearCart) {
             cost = cost + getRawCost(bear);
+            System.out.println("Getting raw cost, adding " + cost);
         }
+        // Calculate 'cost'
         for (Bear bear : this.bearCart) {
             temp += getCost(bear);
+            System.out.println("Getting cost, adding " + temp);
         }
 
         double savings = 0;
         // calculate total cost
         double rawCost = 0;
+        // Calculate 'rawCost'
         for (Bear bear : bearCart) {
+            System.out.println("pre rawCost loop >>> " + rawCost);
             rawCost += this.getRawCost(bear);
+            System.out.println("I have no idea what this number is >>> " + rawCost);
         }
 
         // calculate adjusted cost
@@ -210,7 +226,9 @@ public class BearWorkshop implements BearWorkshopInterface {
         for (Bear bear : this.bearCart) {
             cost += this.getCost(bear);
         }
+        System.out.print("(" + savings + ")");
         savings += rawCost - cost; // calc delta between raw and prorated cost
+        System.out.println("savings += rawCost(" + rawCost + ") - cost(" + cost + ") = (" + savings + ")");
 
      // DLS_DEAD_LOCAL_STORE: Dead store to local variable IGNORE
         List<Bear> nonFreeBears = new LinkedList<>();
@@ -272,13 +290,39 @@ public class BearWorkshop implements BearWorkshopInterface {
             Bear bear = cart.get(i); // Select each bear
             double rawCost = getRawCost(bear); // Find raw cost of each bear
             double cost = getCost(bear); // Find the cost of each bear
-            System.out.println(rawCost + " <- raw cost of bear " + i);
-            System.out.println(cost + " <- actual cost of bear " + i);
+            //System.out.println(rawCost + " <- raw cost of bear " + i);
+            //System.out.println(cost + " <- actual cost of bear " + i);
             eachBearSavings += rawCost - cost;
-            System.out.println(eachBearSavings + " <<< each savings at");
+            //System.out.println(eachBearSavings + " <<< each savings at");
         }
 
         return eachBearSavings;
+    }
+    
+    public void sortBears(){
+        List<Bear> cart;
+        cart = this.bearCart;
+        System.out.println("Unsorted");
+        Bear test = null;
+        for (int i=0; i<cart.size(); i++) {
+            test = cart.get(i);
+            test.price = getRawCost(test);
+            System.out.println("Unsorted Price" + test.price);
+        }
+            
+        Collections.sort(cart, new SortByPrice());
+        
+        System.out.println("Sorted by price");
+        for (int i=0; i<cart.size(); i++) {
+            System.out.println(bearCart.get(i).price);
+        }
+    }
+    
+    class SortByPrice implements Comparator<Bear>{
+        public int compare(Bear a, Bear b)
+        {
+            return (int) (a.price - b.price);
+        }
     }
 
 }
