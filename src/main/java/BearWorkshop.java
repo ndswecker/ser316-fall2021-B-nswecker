@@ -299,6 +299,9 @@ public class BearWorkshop implements BearWorkshopInterface {
         return eachBearSavings;
     }
     
+    /** 
+     * sortBears method to sort the bearCart from lowest to highest price
+     * */
     public void sortBears(){
         List<Bear> cart;
         cart = this.bearCart;
@@ -318,6 +321,10 @@ public class BearWorkshop implements BearWorkshopInterface {
         }
     }
     
+    /** 
+     * Class: sortByPrice
+     * Description: a private class that implements a comparator used to sort bears by price
+     * */
     class SortByPrice implements Comparator<Bear>{
         public int compare(Bear a, Bear b)
         {
